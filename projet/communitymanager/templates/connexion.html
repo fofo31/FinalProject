@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<style>
+    body{
+        background-color: lightgrey;
+    }
+    h1 {
+        background-color: darkgrey;
+        color:white;
+        text-align: center;
+        font-family: "Comic Sans MS";
+    }
+    form{
+
+        text-align: center;
+        vertical-align: center;
+        margin-top: 200ppx;
+    }
+</style>
+
+<body>
+<h1>CLUBS DE SUPAERO</h1>
+{% if error %}
+<p>erreur</p>
+{% endif %}
+{% if user.is_authentificated %}
+Vous êtes connectés
+{% else %}
+
+<form method="post" action= "{% url "connexion" %}">
+        {% csrf_token %}
+        {{form.as_p}}
+        <input type="submit" value="Se connecter">
+    </form>
+{% endif %}
+
+
+</body>
+</html>

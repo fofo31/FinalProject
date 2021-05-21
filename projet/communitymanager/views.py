@@ -1,10 +1,9 @@
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.models import User
 from django.shortcuts import render, redirect
 
 from .forms import ConnexionForm
-
-def accueil(request):
-    return render(request,'accueil.html',locals())
+from .models import Communaute
 
 
 def connexion(request):
@@ -18,17 +17,37 @@ def connexion(request):
         user = authenticate(username=username, password=password)
         if user and user.is_active:
             login(request, user)
-            return redirect(accueil)
+            id = user.id
+            return redirect(communaute, id=id)
 
         else:
-            error=True
+            error = True
 
     else:
         form = ConnexionForm()
     return render(request, 'connexion.html', locals())
+
 
 def deconnexion(request):
     logout(request)
     return redirect(connexion)
 
 
+def communaute(request, id):
+    ab = User.objects.get(id=id)
+    comm_ab = ab.communaute_set.all()
+    comm = Communaute.objects.all()
+    pas_ab = []
+
+    for com in comm:
+        abonne = False
+        for com1 in comm_ab:
+            if com.name == com1.name:
+                abonne = True
+                break
+        if not abonne:
+            pas_ab.append(com)
+
+
+
+    return render(request, 'communaute.html', locals())

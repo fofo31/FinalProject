@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+
+
+<body>
+<table id="accueil">
+    <tr>
+    <th>Communauté</th>
+    <th>Abonnement</th>
+    </tr>
+
+
+
+    <h1>Bienvenue {{ab}} </h1>
+
+    {% for com in comm_ab %}
+    <div class ="com">
+        <tr>
+       <th> {{com.name}} </th>
+    </div>
+    <th><i class="fas fa-cloud" style="color:red"></i></th>
+    </tr>
+
+
+
+   {%empty%}
+    <p>Aucun abonnement</p>
+   {%endfor%}
+
+   {% for com2 in pas_ab %}
+        <div class ="com2">
+
+            <tr>
+            <th>{{com2.name}}</th>
+            <th><i class="fas fa-cloud"></i></th>
+            </tr>
+
+        </div>
+
+    {%endfor%}
+
+<a href="deconnexion"><input type="button" value="Déconnexion"></a>
+
+</table>
+</body>
+</html>

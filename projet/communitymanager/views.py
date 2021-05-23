@@ -48,6 +48,20 @@ def communaute(request, id):
         if not abonne:
             pas_ab.append(com)
 
-
-
     return render(request, 'communaute.html', locals())
+
+
+def desabonnement(request,id,com_traite):
+    ab = User.objects.get(id=id)
+    cc = Communaute.objects.get(name=com_traite)
+    cc.abonnes.remove(ab)
+
+    return redirect(communaute,id=id)
+
+def abonnement(request,id,com2):
+    ab = User.objects.get(id=id)
+    cc = Communaute.objects.get(name=com2)
+    cc.abonnes.add(ab)
+
+    return redirect(communaute, id=id)
+

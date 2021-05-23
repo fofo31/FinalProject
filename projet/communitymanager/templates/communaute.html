@@ -3,6 +3,11 @@
 <head>
 <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
+<style>
+    a{
+        color: black;
+    }
+</style>
 
 
 <body>
@@ -16,12 +21,12 @@
 
     <h1>Bienvenue {{ab}} </h1>
 
-    {% for com in comm_ab %}
+    {% for com_traite in comm_ab %}
     <div class ="com">
         <tr>
-       <th> {{com.name}} </th>
+       <th> {{com_traite.name}} </th>
     </div>
-    <th><i class="fas fa-cloud" style="color:red"></i></th>
+    <th><a href= "{% url 'desabonnement' ab.id com_traite %}"><i class="fas fa-heart" style ="color:red"></i></a></th>
     </tr>
 
 
@@ -35,10 +40,9 @@
 
             <tr>
             <th>{{com2.name}}</th>
-            <th><i class="fas fa-cloud"></i></th>
-            </tr>
-
         </div>
+        <th><a href= "{% url 'abonnement' ab.id com2 %}"><i class="fas fa-heart"></i></a></th>
+        </tr>
 
     {%endfor%}
 

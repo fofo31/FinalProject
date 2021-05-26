@@ -1,6 +1,6 @@
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 
 from .forms import ConnexionForm
 from .models import Communaute
@@ -51,17 +51,24 @@ def communaute(request, id):
     return render(request, 'communaute.html', locals())
 
 
-def desabonnement(request,id,com_traite):
+def desabonnement(request, id, com_traite):
     ab = User.objects.get(id=id)
     cc = Communaute.objects.get(name=com_traite)
     cc.abonnes.remove(ab)
 
-    return redirect(communaute,id=id)
+    return redirect(communaute, id=id)
 
-def abonnement(request,id,com2):
+
+def abonnement(request, id, com2):
     ab = User.objects.get(id=id)
     cc = Communaute.objects.get(name=com2)
     cc.abonnes.add(ab)
 
     return redirect(communaute, id=id)
 
+
+def afficher_communaute(request, id):
+    comm_affichee = get_object_or_404(Communaute, id=id)
+    posts = comm_affichee.post_set.all()
+
+    return render(request, 'afficher_communaute.html', locals())

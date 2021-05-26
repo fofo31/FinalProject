@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<body>
+   {% for p in posts %}
+    <div class ="p">
+      {{p.description}}
+    </div>
+
+{%empty%}
+    <p>Aucun post</p>
+
+{%endfor%}
+</body>
+</html>

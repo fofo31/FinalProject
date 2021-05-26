@@ -6,6 +6,8 @@
 <style>
     a{
         color: black;
+        text-decoration: none;
+
     }
 </style>
 
@@ -22,9 +24,9 @@
     <h1>Bienvenue {{ab}} </h1>
 
     {% for com_traite in comm_ab %}
-    <div class ="com">
+    <div class ="com_traite">
         <tr>
-       <th> {{com_traite.name}} </th>
+       <th><a href= "{% url 'afficher_communaute' com_traite.id %}">{{com_traite.name}}</a></th>
     </div>
     <th><a href= "{% url 'desabonnement' ab.id com_traite %}"><i class="fas fa-heart" style ="color:red"></i></a></th>
     </tr>
@@ -39,7 +41,7 @@
         <div class ="com2">
 
             <tr>
-            <th>{{com2.name}}</th>
+            <th><a href= "{% url 'afficher_communaute' com2.id %}">{{com2.name}}</a></th>
         </div>
         <th><a href= "{% url 'abonnement' ab.id com2 %}"><i class="fas fa-heart"></i></a></th>
         </tr>

@@ -1,22 +1,22 @@
 <!DOCTYPE html>
+{%  load static %}
 <html lang="en">
 <head>
-<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
 </head>
-<style>
+<!--<style>
     a{
         color: black;
-        text-decoration: none;
-
     }
-</style>
+</style>-->
 
 
 <body>
 <table id="accueil">
     <tr>
-    <th>Communauté</th>
-    <th>Abonnement</th>
+    <th scope="col_name">Communauté</th>
+    <th scope="col_name">Abonnement</th>
     </tr>
 
 
@@ -26,7 +26,7 @@
     {% for com_traite in comm_ab %}
     <div class ="com_traite">
         <tr>
-       <th><a href= "{% url 'afficher_communaute' com_traite.id %}">{{com_traite.name}}</a></th>
+            <th scope="row"> <a href="{% url 'afficher_communaute' com_traite.id %}">{{ com_traite.name}}</a> </th>
     </div>
     <th><a href= "{% url 'desabonnement' ab.id com_traite %}"><i class="fas fa-heart" style ="color:red"></i></a></th>
     </tr>
@@ -41,15 +41,15 @@
         <div class ="com2">
 
             <tr>
-            <th><a href= "{% url 'afficher_communaute' com2.id %}">{{com2.name}}</a></th>
+                <th scope="row">{{com2.name}}</th>
         </div>
-        <th><a href= "{% url 'abonnement' ab.id com2 %}"><i class="fas fa-heart"></i></a></th>
+        <th ><a href= "{% url 'abonnement' ab.id com2 %}"><i class="fas fa-heart" style ="color:black"></i></a></th>
         </tr>
 
     {%endfor%}
 
-<a href="deconnexion"><input type="button" value="Déconnexion"></a>
-
 </table>
+
+<a href="deconnexion" class="deconnexion"><input type="button" value="Déconnexion"></a>
 </body>
 </html>

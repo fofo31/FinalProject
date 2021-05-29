@@ -16,6 +16,7 @@ class Priorite(models.Model):
 
 class Post(models.Model):
     description = models.CharField(max_length=200)
+    titre=models.CharField(max_length=200)
     date = models.DateField()
     communaute = models.ForeignKey('Communaute',on_delete=models.CASCADE)
     priorite = models.ForeignKey('Priorite', on_delete=models.CASCADE)

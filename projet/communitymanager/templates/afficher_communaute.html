@@ -1,15 +1,43 @@
 <!DOCTYPE html>
+{%  load static %}
 <html lang="en">
-
+<head>
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+</head>
 <body>
-   {% for p in posts %}
-    <div class ="p">
-      {{p.description}}
-    </div>
+    <h1> Bienvenue au club de {{ comm_affichee.name }} de Supaero</h1>
+    <table>
+        <tr>
+            <th scope="col_name">Date du post</th>
+            <th scope="col_name">Titre</th>
+            <th scope="col_name">Auteur</th>
+            <th scope="col_name">Date de l'événement</th>
+            <th scope="col_name">Voir</th>
 
-{%empty%}
-    <p>Aucun post</p>
+        </tr>
+        {% for p in posts %}
+            <tr>
+                <div class="post">
+                    <th scope="row">{{ p.date }}</th>
+                    <th scope="row">{{ p.titre }}</th>
+                    <th scope="aut">{{ p.auteur}}</th>
+                    {% if p.evenementiel %}
+                        <th scope="ev">{{ p.date_evenement }}</th>
+                    {% else %}
+                        <th scope="row">{{ p.description }}</th>
+                    {% endif %}
+                    <th scope="row"><a href= "{% url 'voir_post' p.id %}"><i class="fas fa-eye"></i></a></th>
 
-{%endfor%}
+                </div>
+            </tr>
+
+        {% empty %}
+            <p>
+                Aucun post
+            </p>
+        {% endfor %}
+    </table>
+
 </body>
 </html>

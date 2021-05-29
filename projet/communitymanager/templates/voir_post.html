@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+{%  load static %}
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+</head>
+
+<body>
+
+{{post_affiche.titre}} par {{post_affiche.auteur}}
+Le {{post_affiche.date}}
+
+
+
+<p>{{post_affiche.description}}</p>
+
+</body>
+</html>

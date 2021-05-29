@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 from django.shortcuts import render, redirect, get_object_or_404
 
 from .forms import ConnexionForm
-from .models import Communaute
+from .models import Communaute, Post
 
 
 def connexion(request):
@@ -66,9 +66,14 @@ def abonnement(request, id, com2):
 
     return redirect(communaute, id=id)
 
-
-def afficher_communaute(request, id):
+def afficher_communaute(request,id):
     comm_affichee = get_object_or_404(Communaute, id=id)
     posts = comm_affichee.post_set.all()
 
-    return render(request, 'afficher_communaute.html', locals())
+    return render(request, 'afficher_communaute.html',locals())
+
+def voir_post(request,id):
+    post_affiche = get_object_or_404(Post, id=id)
+    return render(request,'voir_post.html',locals())
+
+

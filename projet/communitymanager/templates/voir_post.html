@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 {%  load static %}
+
 <html lang="en">
 
 <head>
@@ -8,12 +9,28 @@
 
 <body>
 
+<div class="topnav">
+  <a class="active" href= "{% url 'communaute' user.id %}">Mes communautés</a>
+  <a href="{% url 'nouveau_post' %}">Nouveau Post</a>
+</div>
+
 {{post_affiche.titre}} par {{post_affiche.auteur}}
 Le {{post_affiche.date}}
 
 
 
 <p>{{post_affiche.description}}</p>
+
+{% for commentaire in commentaires_post %}
+        <p>{{commentaire.contenu}}</p>
+
+{% empty %}
+        <p>Soyez le premier à commenter</p>
+
+
+{% endfor %}
+<a href= "{% url 'nouveau_commentaire' post_affiche.id %}">Ajouter un commentaire</a>
+
 
 </body>
 </html>

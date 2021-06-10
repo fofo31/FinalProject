@@ -53,7 +53,7 @@ th[scope="row"] {
 }
 th[scope="ev"] {
     background-color: #d7d9f2;
-    color:darkgrey;
+    color: red;
 }
 th[scope="aut"] {
     background-color: #d7d9f2;
@@ -77,18 +77,16 @@ table {
     margin-bottom: 30px;
 }
 
+a:visited{
+	color: black;
+}
 
 a:link 
 { 
- text-decoration:none;
-    color:black;
-}
-a{
-    color:black;
-}
+ text-decoration:none; 
+} 
 
 .deconnexion{
 	margin-top: 30 px;
 	margin-left: 30 px;
 }
-

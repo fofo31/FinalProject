@@ -2,17 +2,19 @@
 {%  load static %}
 <html lang="en">
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="{% static 'css/style.css' %}" />
-</head>
-<!--<style>
-    a{
-        color: black;
-    }
-</style>-->
-
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <body>
+
+<div class="topnav">
+  <a class="active" href= "{% url 'communaute' user.id %}">Mes communautés</a>
+  <a href="{% url 'nouveau_post' %}">Nouveau Post</a>
+</div>
+
+
 <table id="accueil">
     <tr>
     <th scope="col_name">Communauté</th>

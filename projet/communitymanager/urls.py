@@ -8,5 +8,7 @@ urlpatterns = [
     path('communaute/desabonnement/<int:id>/<str:com_traite>',views.desabonnement,name='desabonnement'),
     path('communaute/abonnement/<int:id>/<str:com2>',views.abonnement,name='abonnement'),
     path('afficher_communaute/<int:id>',views.afficher_communaute,name='afficher_communaute'),
-    path('voir_post/<int:id>',views.voir_post,name='voir_post')
+    path('voir_post/<int:post_id>',views.voir_post,name='voir_post'),
+    path('nouveau_post/',views.nouveau_post,name='nouveau_post'),
+    path('nouveau_commentaire/<int:post_id>',views.nouveau_commentaire,name='nouveau_commentaire')
 ]

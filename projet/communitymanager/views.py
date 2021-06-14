@@ -119,6 +119,9 @@ def nouveau_commentaire(request, post_id):
 def modif_post(request,post_id):
     '''Permet de modifier un post'''
     post=get_object_or_404(Post,id=post_id)
+    autorisation = False
+    if post.auteur == request.user:
+        autorisation = True
     form = NouveauPost(request.POST or None)
     form.fields['description'].initial = post.description
     form.fields['date'].initial = post.date
@@ -129,6 +132,7 @@ def modif_post(request,post_id):
     form.fields['auteur'].initial = post.auteur
     form.fields['titre'].initial = post.titre
     if form.is_valid():
+        titre = form.cleaned_data['titre']
         description = form.cleaned_data['description']
         date = form.cleaned_data['date']
         communaute = form.cleaned_data['communaute']
@@ -136,7 +140,7 @@ def modif_post(request,post_id):
         evenementiel = form.cleaned_data['evenementiel']
         date_evenement = form.cleaned_data['date_evenement']
         auteur = form.cleaned_data['auteur']
-        titre=form.cleaned_data['titre']
+        post.titre = titre
         post.description = description
         post.date = date
         post.communaute = communaute
@@ -144,7 +148,7 @@ def modif_post(request,post_id):
         post.evenementiel= evenementiel
         post.date_evenement = date_evenement
         post.auteur = auteur
-        post.titre=titre
+        post.save()
 
         return redirect('voir_post',post_id=post.id)
     return render(request,'modifier_post.html',locals())

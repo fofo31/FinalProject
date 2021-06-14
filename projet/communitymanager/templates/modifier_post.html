@@ -1,11 +1,23 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
+<head>
+
+ <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+
+</head>
 
 <body>
-<form action="{% url 'modif_post' post.id %}" method="post">
-    {% csrf_token %}
-    {{form.as_p}}
-    <input type="submit" value="Modifier" />
-</form>
+{% if autorisation == True %}
+    <h1>Modifier le post</h1>
+    <form action="{% url 'modif_post' post.id %}" method="post">
+        {% csrf_token %}
+        {{form.as_p}}
+        <input type="submit" value="Modifier" />
+    </form>
+{% else %}
+    <p>Vous n'êtes pas autorisé à modifier le post</p>
+
+{% endif %}
 </body>
 </html>

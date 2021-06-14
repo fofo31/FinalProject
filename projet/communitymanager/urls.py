@@ -10,5 +10,6 @@ urlpatterns = [
     path('afficher_communaute/<int:id>',views.afficher_communaute,name='afficher_communaute'),
     path('voir_post/<int:post_id>',views.voir_post,name='voir_post'),
     path('nouveau_post/',views.nouveau_post,name='nouveau_post'),
-    path('nouveau_commentaire/<int:post_id>',views.nouveau_commentaire,name='nouveau_commentaire')
+    path('nouveau_commentaire/<int:post_id>',views.nouveau_commentaire,name='nouveau_commentaire'),
+    path('modif_post/<int:post_id>',views.modif_post, name= 'modif_post')
 ]

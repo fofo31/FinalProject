@@ -1,7 +1,43 @@
 <!DOCTYPE html>
+{%  load static %}
 <html lang="en">
+<head>
+ <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+</head>
 
 <body>
+<style>
+    .topnav {
+  overflow: hidden;
+  background-color: #333;
+}
+
+.topnav a {
+  float: left;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+
+.topnav a.active {
+  background-color: #04AA6D;
+  color: white;
+}
+</style>
+
+<div class="topnav">
+  <a class="active" href= "{% url 'communaute' user.id %}">Mes communautés</a>
+  <a href="{% url 'nouveau_post' %}">Nouveau Post</a>
+</div>
+<h1>Créez votre post</h1>
 <form action="{% url 'nouveau_post' %}" method="post">
     {% csrf_token %}
     {{ form.as_p }}

@@ -5,17 +5,45 @@
 
 <head>
     <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+
 </head>
 
 <body>
+<style>
+    .topnav {
+  overflow: hidden;
+  background-color: #333;
+}
+
+.topnav a {
+  float: left;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+
+.topnav a.active {
+  background-color: #04AA6D;
+  color: white;
+}
+</style>
 
 <div class="topnav">
   <a class="active" href= "{% url 'communaute' user.id %}">Mes communautés</a>
   <a href="{% url 'nouveau_post' %}">Nouveau Post</a>
 </div>
 
-{{post_affiche.titre}} par {{post_affiche.auteur}}
-Le {{post_affiche.date}}
+
+<h1>{{post_affiche.titre}} par {{post_affiche.auteur}}
+    Le {{post_affiche.date}}</h1>
 
 
 
@@ -30,6 +58,8 @@ Le {{post_affiche.date}}
 
 {% endfor %}
 <a href= "{% url 'nouveau_commentaire' post_affiche.id %}">Ajouter un commentaire</a>
+<a href= "{% url 'modif_post' post_affiche.id %}">Modifier le post</a>
+
 
 
 </body>

@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<body>
+<form action="{% url 'modif_post' post.id %}" method="post">
+    {% csrf_token %}
+    {{form.as_p}}
+    <input type="submit" value="Modifier" />
+</form>
+</body>
+</html>

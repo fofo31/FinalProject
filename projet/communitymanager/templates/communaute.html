@@ -6,8 +6,35 @@
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="{% static 'css/style.css' %}" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
 
 <body>
+<style>
+    .topnav {
+  overflow: hidden;
+  background-color: #333;
+}
+
+.topnav a {
+  float: left;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+
+.topnav a.active {
+  background-color: #04AA6D;
+  color: white;
+}
+</style>
 
 <div class="topnav">
   <a class="active" href= "{% url 'communaute' user.id %}">Mes communautés</a>
@@ -25,12 +52,12 @@
 
     <h1>Bienvenue {{ab}} </h1>
 
-    {% for com_traite in comm_ab %}
+    {% for com_traite in user_communities %}
     <div class ="com_traite">
         <tr>
             <th scope="row"> <a href="{% url 'afficher_communaute' com_traite.id %}">{{ com_traite.name}}</a> </th>
     </div>
-    <th><a href= "{% url 'desabonnement' ab.id com_traite %}"><i class="fas fa-heart" style ="color:red"></i></a></th>
+    <th><a href= "{% url 'desabonnement' current_user.id com_traite %}"><i class="fas fa-heart" style ="color:red"></i></a></th>
     </tr>
 
 
@@ -39,13 +66,13 @@
     <p>Aucun abonnement</p>
    {%endfor%}
 
-   {% for com2 in pas_ab %}
+   {% for com2 in not_subscribed %}
         <div class ="com2">
 
             <tr>
                 <th scope="row">{{com2.name}}</th>
         </div>
-        <th ><a href= "{% url 'abonnement' ab.id com2 %}"><i class="fas fa-heart" style ="color:black"></i></a></th>
+        <th ><a href= "{% url 'abonnement' current_user.id com2 %}"><i class="fas fa-heart" style ="color:black"></i></a></th>
         </tr>
 
     {%endfor%}

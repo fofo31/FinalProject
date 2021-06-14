@@ -11,6 +11,7 @@
 }
 
 
+
 body
 {
 	background-color: lightgrey;
@@ -89,4 +90,14 @@ a:link
 .deconnexion{
 	margin-top: 30 px;
 	margin-left: 30 px;
+}
+
+form{
+    text-align: justify;
+}
+
+p{
+    color : black;
+	text-align: left;
+	font-family: 'Trebuchet MS', Arial, sans-serif
 }

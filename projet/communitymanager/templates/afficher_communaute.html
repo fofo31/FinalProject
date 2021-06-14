@@ -7,20 +7,55 @@
     <link rel="stylesheet" href="{% static 'css/style.css' %}" />
 </head>
 <body>
+<style>
+    .topnav {
+  overflow: hidden;
+  background-color: #333;
+}
+
+.topnav a {
+  float: left;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+
+.topnav a.active {
+  background-color: #04AA6D;
+  color: white;
+}
+</style>
+
+<div class="topnav">
+  <a class="active" href= "{% url 'communaute' user.id %}">Mes communautés</a>
+  <a href="{% url 'nouveau_post' %}">Nouveau Post</a>
+</div>
+
 </header>
     <h1> Bienvenue au club de {{ comm_affichee.name }} de Supaero</h1>
 
     <table>
         <tr>
+            <th scope="col_name">Titre</th>
             <th scope="col_name">Date du post</th>
             <th scope="col_name">Auteur</th>
             <th scope="col_name">Voir</th>
-        </tr>
+
         {% for p in posts %}
             <tr>
                 <div class="post">
+                    <th scope="row">{{p.titre}}</th>
                     <th scope="row">{{ p.date }}</th>
                     <th scope="row">{{ p.auteur}}</th>
+
                 </div>
                 <th scope="row"><a href= "{% url 'voir_post' p.id %}"><i class="fas fa-eye"></i></a></i></th>
             </tr>
